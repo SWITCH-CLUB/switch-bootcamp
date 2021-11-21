@@ -2,9 +2,17 @@ import React, { Component } from "react";
 import Header from "./Bootstrap/Header";
 import Badge from "./Badge";
 import Form from "./Form";
+import { GetGitHubUserData } from "../services/GitHubService";
 
 class App extends Component {
-  state = {};
+  state = {
+    GitHubData: null
+  };
+  handleFetchGitHubData = username => {
+    GetGitHubUserData(username).then(GitHubData =>
+      this.setState({ GitHubData })
+    );
+  };
   render() {
     return (
       <div className="App">
@@ -14,15 +22,36 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-4">
-              <Form />
+              <Form handleFetchGitHubData={this.handleFetchGitHubData} />
+              <pre className="bg-light border rounded p-2 mt-5">
+                {JSON.stringify(this.state, null, 2)}
+              </pre>
             </div>
             <div className="col-12 col-md-8">
-              <Badge
-                Avatar="https://i.imgur.com/wbUfjzdl.png"
-                FullName="Priyanshu Das"
-                Username="priyanshu"
-                Description="I am Priyanshu!"
-              />
+              {this.state.GitHubData ? (
+                this.state.GitHubData.name &&
+                this.state.GitHubData.bio &&
+                this.state.GitHubData.location ? (
+                  <Badge
+                    Avatar={this.state.GitHubData.avatar_url}
+                    FullName={this.state.GitHubData.name}
+                    Username={this.state.GitHubData.login}
+                    Description={
+                      <>
+                        <p>
+                          Hey, my name is {this.state.GitHubData.name} and I am
+                          from {this.state.GitHubData.location}. My bio reads{" "}
+                          {this.state.GitHubData.bio}
+                        </p>
+                      </>
+                    }
+                  />
+                ) : (
+                  "Some info not present, Badge can be created."
+                )
+              ) : (
+                "Please get GitHub Data."
+              )}
             </div>
           </div>
         </div>
