@@ -1,11 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
+import Header from "./Bootstrap/Header";
 
-const App = () => {
-  return (
-    <div className="App">
-      <h1>Hello Switch!</h1>
-    </div>
-  );
-};
-
+class App extends Component {
+  state = {};
+  render() {
+    return (
+      <div className="App">
+        <Header>SWITCH</Header>
+      </div>
+    );
+  }
+}
 export default App;
