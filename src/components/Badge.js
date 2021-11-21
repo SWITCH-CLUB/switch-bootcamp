@@ -16,7 +16,7 @@ const Badge = ({ Avatar, Username, FullName, Description }) => {
             <h2>
               <em>{Username}</em>
             </h2>
-            <p>{Description}</p>
+            {Description}
           </div>
         </div>
       </div>
