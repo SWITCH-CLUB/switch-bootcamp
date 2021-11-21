@@ -23,9 +23,6 @@ class App extends Component {
           <div className="row">
             <div className="col-12 col-md-4">
               <Form handleFetchGitHubData={this.handleFetchGitHubData} />
-              <pre className="bg-light border rounded p-2 mt-5">
-                {JSON.stringify(this.state, null, 2)}
-              </pre>
             </div>
             <div className="col-12 col-md-8">
               {this.state.GitHubData ? (
@@ -47,7 +44,7 @@ class App extends Component {
                     }
                   />
                 ) : (
-                  "Some info not present, Badge can be created."
+                  "Some info not present, Badge cannot be created."
                 )
               ) : (
                 "Please get GitHub Data."
