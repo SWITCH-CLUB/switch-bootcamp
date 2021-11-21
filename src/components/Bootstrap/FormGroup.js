@@ -7,6 +7,7 @@ const FormGroup = ({
   defaultValue,
   Checked,
   defaultChecked,
+  Placeholder,
   Desc
 }) => {
   return (
@@ -23,6 +24,7 @@ const FormGroup = ({
         checked={Checked}
         defaultChecked={defaultChecked}
         aria-describedby={Id + "Help"}
+        placeholder={Placeholder}
       />
       {Desc && (
         <small id={Id + "Help"} className="form-text text-muted">
