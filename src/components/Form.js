@@ -1,10 +1,11 @@
 import { useState } from "react";
 import FormGroup from "./Bootstrap/FormGroup";
 
-const Form = () => {
+const Form = ({ handleFetchGitHubData }) => {
   const [Username, setUsername] = useState("");
   const handleSubmit = e => {
     e.preventDefault();
+    handleFetchGitHubData(Username);
   };
   return (
     <form onSubmit={handleSubmit}>
