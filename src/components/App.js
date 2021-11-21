@@ -17,7 +17,12 @@ class App extends Component {
               <Form />
             </div>
             <div className="col-12 col-md-8">
-              <Badge />
+              <Badge
+                Avatar="https://i.imgur.com/wbUfjzdl.png"
+                FullName="Priyanshu Das"
+                Username="priyanshu"
+                Description="I am Priyanshu!"
+              />
             </div>
           </div>
         </div>
